@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Invitation pour Raouia</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&family=Quicksand:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg:#2a0e1d; --bg-2:#55183a; --paper:#fdeaf0; --ink:#4a1230;
+  --wine:#9b1d52; --muted:#8a5670; --gold:#c8973f; --gold-light:#f1d58a;
+  --blush:#ffc7d8; --font-display:"Cormorant Garamond",Georgia,serif;
+  --font-script:"Great Vibes","Brush Script MT",cursive;
+  --font-body:"Quicksand",system-ui,sans-serif; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{min-height:100%}
+body{
+  margin:0;background:var(--bg);
+  background-image:radial-gradient(120% 90% at 50% 0%,var(--bg-2) 0%,var(--bg) 70%);
+  background-attachment:fixed;color:#fff1f6;font-family:var(--font-body);
+  font-size:17px;line-height:1.5;padding:28px max(16px,env(safe-area-inset-right,0px)) 28px max(16px,env(safe-area-inset-left,0px));
+  min-height:100dvh;display:flex;align-items:center;justify-content:center;overflow-x:hidden;
+}
+#bokeh{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(2px);opacity:0;animation:drift linear infinite}
+@keyframes drift{0%{transform:translateY(0) scale(.8);opacity:0}15%{opacity:.5}85%{opacity:.3}100%{transform:translateY(-110vh) scale(1.1);opacity:0}}
+main{position:relative;z-index:1;width:100%;max-width:480px;display:flex;flex-direction:column;align-items:center}
+#scene{width:100%;display:flex;flex-direction:column;align-items:center;gap:30px;text-align:center}
+.kicker{margin:0;font-family:var(--font-display);font-style:italic;font-size:1.35rem;color:var(--blush)}
+.to{margin:0;font-family:var(--font-script);font-size:clamp(2.6rem,11vw,3.6rem);line-height:1.1;background:linear-gradient(100deg,#b88a3e,var(--gold-light),#b88a3e,var(--gold-light));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
+@keyframes shimmer{to{background-position:200% 0}}
+.env{position:relative;width:min(86vw,360px);aspect-ratio:3/2;perspective:900px;animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.env .back{position:absolute;inset:0;background:linear-gradient(#7a2147,#5c1736);border-radius:10px;box-shadow:0 24px 50px #0007,0 0 0 1px #f1d58a40}
+.env .letter{position:absolute;left:7%;right:7%;top:10%;bottom:8%;background:var(--paper);border-radius:6px}
+.env .pocket{position:absolute;inset:0;background:linear-gradient(#a03466,#8a2a58);clip-path:polygon(0 100%,0 0,50% 64%,100% 0,100% 100%);border-radius:10px;z-index:2}
+.env .flap{position:absolute;left:0;right:0;top:0;height:64%;background:linear-gradient(#b8426f,#a03466);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform .9s cubic-bezier(.5,0,.2,1);z-index:3;border-radius:10px 10px 0 0}
+.env.open{animation:none}.env.open .flap{transform:rotateX(180deg);z-index:1}
+.env.open .seal{opacity:0;transform:translate(-50%,-50%) scale(1.5);pointer-events:none}
+.seal{position:absolute;left:50%;top:62%;transform:translate(-50%,-50%);z-index:5;width:92px;height:92px;border:0;padding:0;background:none;cursor:pointer;transition:opacity .4s,transform .5s;touch-action:none;user-select:none;-webkit-user-select:none}
+.seal:focus-visible{outline:3px solid var(--gold-light);outline-offset:4px;border-radius:50%}
+.seal .wax{position:absolute;inset:9px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e0436f,#a3123f 62%,#760a2c);box-shadow:0 6px 14px #0007,inset 0 -3px 6px #0004;display:grid;place-items:center;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.seal .wax svg{width:34px;height:34px;filter:drop-shadow(0 1px 0 #ffffff59)}
+.seal .ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:4}.ring .track{stroke:#ffffff2e}.ring .bar{stroke:var(--gold-light);stroke-linecap:round;stroke-dasharray:276.46;stroke-dashoffset:276.46}
+.hold{margin:0;color:var(--blush);font-size:.95rem;letter-spacing:.04em;animation:fade 2.4s ease-in-out infinite}
+@keyframes fade{50%{opacity:.45}}
+.paper{
+  --rx:0deg;--ry:0deg;width:100%;background:var(--paper);color:var(--ink);border-radius:18px;
+  padding:40px 24px 32px;position:relative;box-shadow:0 28px 60px #0008,inset 0 0 0 2px var(--paper),inset 0 0 0 3px var(--gold);
+  text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;
+  transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .2s ease-out;
+  animation:rise .9s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(40px) scale(.96)}}
+.bow{width:64px;height:40px;display:block}
+.eyebrow{margin:0;font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+h1,h2{margin:0;font-family:var(--font-display);font-weight:500;font-size:clamp(1.9rem,8vw,2.6rem);line-height:1.15;text-wrap:balance}
+h1 .name{display:block;font-family:var(--font-script);font-weight:400;font-size:1.5em;line-height:1.05;color:var(--wine)}
+.sub{margin:0;color:var(--muted);max-width:34ch;text-wrap:balance}
+.rule{width:100%;max-width:220px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border:0;margin:0}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px;width:100%;min-height:5.2rem}
+button,.btn{font:inherit;font-weight:600;cursor:pointer;border-radius:999px;text-decoration:none;display:inline-block;line-height:1.2;text-align:center}
+button:focus-visible,.btn:focus-visible,input:focus-visible{outline:3px solid var(--wine);outline-offset:3px}
+.gold-btn{background:linear-gradient(135deg,#e6bf6a,#c8973f 55%,#e6bf6a);color:#3a1026;border:0;padding:.8em 1.8em;box-shadow:0 8px 20px #c8973f73}
+#yes{--g:1;font-size:calc(1.08rem * var(--g));max-width:100%;transition:font-size .3s,transform .15s}
+#yes:hover{transform:translateY(-2px)}
+#no{background:transparent;color:var(--muted);border:1.5px solid var(--gold);padding:.65em 1.4em;font-size:.95rem;position:relative;z-index:6;transition:transform .3s cubic-bezier(.3,1.4,.5,1);will-change:transform}
+.hint{margin:0;min-height:1.5em;color:var(--muted);font-family:var(--font-display);font-size:1.05rem;font-style:italic}
+.group{width:100%;text-align:left;display:flex;flex-direction:column;gap:10px}
+.label{font-family:var(--font-display);font-size:1.2rem;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(62px,1fr));gap:8px}
+.chip{background:#fff;border:1.5px solid #ecc3d1;border-radius:14px;color:var(--ink);padding:8px 4px;display:flex;flex-direction:column;align-items:center;min-width:0}
+.chip small{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.chip strong{font-family:var(--font-display);font-size:1.55rem;line-height:1.1;font-weight:600}
+.chip:hover{border-color:var(--gold)}
+.chip[aria-pressed="true"]{background:var(--wine);border-color:var(--wine);color:#fff}
+.chip[aria-pressed="true"] small{color:#ffd6e4}
+.sky{position:relative;border-radius:16px;padding:18px 16px 14px;background:linear-gradient(90deg,#ffd9a8 0%,#ffb199 28%,#c06a8f 55%,#4a2a63 80%,#1c1233 100%);color:#fff}
+.sky .time{font-family:var(--font-display);font-size:2.4rem;font-weight:600;line-height:1;text-align:center;text-shadow:0 2px 8px #0005;font-variant-numeric:tabular-nums}
+.sky .mood{text-align:center;font-size:.9rem;margin:2px 0 10px;text-shadow:0 1px 4px #0006}
+input[type=range]{appearance:none;width:100%;height:8px;border-radius:8px;background:#ffffff73;margin:8px 0}
+input[type=range]::-webkit-slider-thumb{appearance:none;width:30px;height:30px;border-radius:50%;background:var(--paper);border:3px solid var(--gold);box-shadow:0 3px 10px #0006;cursor:pointer}
+input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--paper);border:3px solid var(--gold);box-shadow:0 3px 10px #0006;cursor:pointer}
+.scale{display:flex;justify-content:space-between;font-size:.75rem;opacity:.9}
+#confirm:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.summary{width:100%;border:1.5px dashed var(--gold);border-radius:16px;padding:14px 16px}
+.summary p{margin:0}.summary .big{font-family:var(--font-display);font-size:1.7rem;font-weight:600;color:var(--wine)}
+.summary .where{color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:12px;width:100%}
+.btn-wa{background:#1faa59;color:#fff;padding:.85em 1.6em;box-shadow:0 8px 18px #1faa5959}
+.note{margin:0;font-size:.92rem;color:var(--muted);text-wrap:balance}
+#burst{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:20}
+@media(prefers-reduced-motion:reduce){
+  .env,.orb,.to,.hold,.seal .wax,.paper{animation:none}
+  .orb{opacity:.25;bottom:auto}.env .flap,#no,#yes,.paper{transition:none}
+}
+</style>
+</head>
+<body>
+<div id="bokeh" aria-hidden="true"></div>
+<main>
+  <section id="scene" aria-label="Enveloppe d'invitation">
+    <p class="kicker">Une invitation vient d'arriver pour</p>
+    <p class="to" id="toName"></p>
+    <div class="env" id="env">
+      <div class="back"></div><div class="letter"></div><div class="pocket"></div><div class="flap"></div>
+      <button class="seal" id="seal" type="button" aria-label="Maintenir appuyé pour ouvrir l'enveloppe">
+        <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="44"/><circle class="bar" id="bar" cx="50" cy="50" r="44"/></svg>
+        <span class="wax"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffd9e4" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 2.8 4.5 6.4 4.5c2.1 0 3.9 1.1 5.6 3.2 1.7-2.1 3.5-3.2 5.6-3.2 3.6 0 5.5 3.7 4 7.2C19.5 16.4 12 21 12 21z"/></svg></span>
+      </button>
+    </div>
+    <p class="hold" id="holdHint">Maintiens le sceau pour l'ouvrir</p>
+  </section>
+
+  <section class="paper" id="ask" hidden aria-labelledby="title">
+    <svg class="bow" viewBox="0 0 64 40" aria-hidden="true"><path d="M32 22 C20 4 4 6 6 18 C8 30 24 28 32 22 Z M32 22 C44 4 60 6 58 18 C56 30 40 28 32 22 Z" fill="#f4b6c8" stroke="#c8973f" stroke-width="1.6" stroke-linejoin="round"/><circle cx="32" cy="22" r="5" fill="#c8973f"/><path d="M28 26 L22 38 M36 26 L42 38" stroke="#c8973f" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    <p class="eyebrow">Une invitation rien que pour toi</p>
+    <h1 id="title"></h1>
+    <hr class="rule">
+    <p class="sub">Une parenthèse douce, des sourires, et une surprise de ma part.</p>
+    <div class="actions" id="actions">
+      <button class="gold-btn" id="yes" type="button">Avec grand plaisir</button>
+      <button id="no" type="button">Non, merci</button>
+    </div>
+    <p class="hint" id="hint" aria-live="polite"></p>
+  </section>
+
+  <section class="paper" id="pick" hidden aria-labelledby="pickTitle">
+    <p class="eyebrow">Merveilleux</p>
+    <h2 id="pickTitle">Choisis ton moment</h2>
+    <hr class="rule">
+    <div class="group">
+      <span class="label" id="dayLabel">Quel jour ?</span>
+      <div class="grid" id="days" role="group" aria-labelledby="dayLabel"></div>
+    </div>
+    <div class="group">
+      <label class="label" for="time">À quelle heure ?</label>
+      <div class="sky" id="sky">
+        <div class="time" id="timeText">20:00</div>
+        <div class="mood" id="mood"></div>
+        <input id="time" type="range" min="12" max="23.5" step="0.5" value="20">
+        <div class="scale" aria-hidden="true"><span>Midi</span><span>Soirée</span><span>Nuit</span></div>
+      </div>
+    </div>
+    <button class="gold-btn" id="confirm" type="button" disabled>Confirmer mon rendez-vous</button>
+  </section>
+
+  <section class="paper" id="done" hidden aria-labelledby="doneTitle" aria-live="polite">
+    <p class="eyebrow">Réservé</p>
+    <h2 id="doneTitle">C'est une belle date</h2>
+    <hr class="rule">
+    <div class="summary"><p class="big" id="sumWhen"></p><p class="where">Le lieu reste une surprise.</p></div>
+    <div class="stack">
+      <p class="note"><strong>Dernière étape :</strong> envoie-moi ta réponse en un geste.</p>
+      <a class="btn btn-wa" id="waBtn" href="#" target="_blank" rel="noopener">Répondre sur WhatsApp</a>
+      <button class="btn btn-out" id="copyBtn" type="button" style="background:transparent;color:var(--wine);border:1.5px solid var(--wine);padding:.75em 1.5em">Copier le message</button>
+      <p class="note" id="copied" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+<canvas id="burst" aria-hidden="true"></canvas>
+<script>
+// Personnalisation
+var CONFIG = {
+  name: "Raouia",
+  question: "m'accorderais-tu une soirée ?",
+  // Numéro WhatsApp avec indicatif du pays, sans + ni espaces.
+  phone: "21625627870"
+};
+
+var $ = function(id){return document.getElementById(id)};
+var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+document.title = "Invitation pour " + CONFIG.name;
+$("toName").textContent = CONFIG.name;
+var h = $("title"), nm = document.createElement("span");
+nm.className = "name"; nm.textContent = CONFIG.name + ",";
+h.appendChild(nm); h.appendChild(document.createTextNode(CONFIG.question));
+
+// Halos flottants
+(function(){
+  var box=$("bokeh"),cols=["rgba(255,199,216,.5)","rgba(241,213,138,.45)","rgba(224,67,111,.35)","rgba(255,255,255,.3)"];
+  for(var i=0;i<14;i++){
+    var o=document.createElement("div"),s=24+Math.random()*70;
+    o.className="orb";o.style.width=o.style.height=s.toFixed(0)+"px";
+    o.style.left=(Math.random()*100).toFixed(1)+"%";o.style.bottom="-90px";o.style.background=cols[i%cols.length];
+    if(reduce){o.style.bottom="auto";o.style.top=(Math.random()*90).toFixed(0)+"%"}
+    else{o.style.animationDuration=(16+Math.random()*16).toFixed(1)+"s";o.style.animationDelay=(-Math.random()*28).toFixed(1)+"s"}
+    box.appendChild(o);
+  }
+})();
+
+// Confettis
+var canvas=$("burst"),ctx=canvas.getContext("2d"),parts=[],raf=null;
+function size(){var dpr=window.devicePixelRatio||1;canvas.width=window.innerWidth*dpr;canvas.height=window.innerHeight*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+function star(x,y,r){ctx.beginPath();for(var i=0;i<8;i++){var a=Math.PI/4*i-Math.PI/2,rr=i%2?r*.35:r;ctx.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}ctx.closePath();ctx.fill()}
+function heart(x,y,s){ctx.beginPath();ctx.moveTo(x,y+s*.3);ctx.bezierCurveTo(x,y-s*.3,x-s,y-s*.3,x-s,y+s*.3);ctx.bezierCurveTo(x-s,y+s*.75,x,y+s,x,y+s*1.25);ctx.bezierCurveTo(x,y+s,x+s,y+s*.75,x+s,y+s*.3);ctx.bezierCurveTo(x+s,y-s*.3,x,y-s*.3,x,y+s*.3);ctx.closePath();ctx.fill()}
+function burst(count,ox,oy){
+  size();var colors=["#f1d58a","#e6bf6a","#ffc7d8","#ff8fb0","#fff"],n=reduce?Math.min(count,16):count;
+  for(var i=0;i<n;i++)parts.push({x:ox+(Math.random()-.5)*60,y:oy,vx:(Math.random()-.5)*11,vy:-(4+Math.random()*10),s:5+Math.random()*8,h:Math.random()<.3,c:colors[(Math.random()*colors.length)|0],life:1});
+  if(!raf)raf=requestAnimationFrame(tick);
+}
+function tick(){
+  ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+  parts=parts.filter(function(p){return p.life>0&&p.y<window.innerHeight+40});
+  parts.forEach(function(p){p.vy+=.22;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.life-=.006;ctx.globalAlpha=Math.max(p.life,0);ctx.fillStyle=p.c;if(p.h)heart(p.x,p.y,p.s*.8);else star(p.x,p.y,p.s)});
+  ctx.globalAlpha=1;if(parts.length)raf=requestAnimationFrame(tick);else{raf=null;ctx.clearRect(0,0,window.innerWidth,window.innerHeight)}
+}
+
+// Ouverture de l'enveloppe en maintenant le sceau
+var seal=$("seal"),bar=$("bar"),holding=false,startT=0,HOLD_MS=1100,opened=false,hraf=null,CIRC=276.46;
+function setProgress(p){bar.style.strokeDashoffset=String(CIRC*(1-p))}
+function loop(now){if(!holding)return;var p=Math.min((now-startT)/HOLD_MS,1);setProgress(p);if(p>=1){holding=false;openEnvelope();return}hraf=requestAnimationFrame(loop)}
+function startHold(){if(opened||holding)return;holding=true;startT=performance.now();hraf=requestAnimationFrame(loop)}
+function stopHold(){if(opened)return;holding=false;if(hraf)cancelAnimationFrame(hraf);setProgress(0)}
+seal.addEventListener("pointerdown",function(e){e.preventDefault();startHold()});
+["pointerup","pointerleave","pointercancel"].forEach(function(ev){seal.addEventListener(ev,stopHold)});
+seal.addEventListener("contextmenu",function(e){e.preventDefault()});
+seal.addEventListener("keydown",function(e){if((e.key==="Enter"||e.key===" ")&&!e.repeat){e.preventDefault();startHold()}});
+seal.addEventListener("keyup",function(e){if(e.key==="Enter"||e.key===" ")stopHold()});
+function openEnvelope(){
+  opened=true;setProgress(1);$("env").classList.add("open");$("holdHint").hidden=true;
+  var r=seal.getBoundingClientRect();burst(60,r.left+r.width/2,r.top+r.height/2);
+  setTimeout(function(){$("scene").hidden=true;$("ask").hidden=false;window.scrollTo(0,0)},reduce?200:1200);
+}
+
+// Inclinaison 3D subtile
+if(!reduce&&window.matchMedia("(pointer: fine)").matches){
+  document.addEventListener("pointermove",function(e){
+    var x=e.clientX/window.innerWidth-.5,y=e.clientY/window.innerHeight-.5;
+    document.querySelectorAll(".paper").forEach(function(p){p.style.setProperty("--ry",(x*6).toFixed(2)+"deg");p.style.setProperty("--rx",(-y*5).toFixed(2)+"deg")});
+  });
+}
+
+// Bouton « Non » qui s'éloigne
+var yes=$("yes"),no=$("no"),hint=$("hint"),tries=0,curX=0,curY=0;
+var hints=["Oh, il s'est envolé.","Même le non préfère dire oui.","Il est parti chercher du champagne.","Le oui, lui, n'a pas bougé.","Ce bouton est un peu timide.","Regarde comme le oui grandit.","Il y a une belle soirée qui t'attend."];
+function dodge(){
+  tries++;var r=no.getBoundingClientRect(),baseL=r.left-curX,baseT=r.top-curY;
+  var vw=document.documentElement.clientWidth,vh=window.innerHeight,m=12;
+  var minX=m-baseL,maxX=vw-m-r.width-baseL,minY=m-baseT,maxY=vh-m-r.height-baseT;
+  if(maxX<minX)minX=maxX=0;if(maxY<minY)minY=maxY=0;
+  var nx=curX,ny=curY,best=-1;
+  for(var i=0;i<14;i++){var tx=minX+Math.random()*(maxX-minX),ty=minY+Math.random()*(maxY-minY),d=Math.hypot(tx-curX,ty-curY);if(d>best){best=d;nx=tx;ny=ty}if(d>160){nx=tx;ny=ty;break}}
+  burst(10,r.left+r.width/2,r.top+r.height/2);curX=nx;curY=ny;
+  no.style.transform="translate("+nx.toFixed(0)+"px,"+ny.toFixed(0)+"px)";
+  yes.style.setProperty("--g",Math.min(1+tries*.12,2).toFixed(2));hint.textContent=hints[(tries-1)%hints.length];
+}
+no.addEventListener("pointerenter",function(e){if(e.pointerType==="mouse")dodge()});
+no.addEventListener("pointerdown",function(e){e.preventDefault();dodge()});
+no.addEventListener("touchstart",function(e){e.preventDefault();dodge()},{passive:false});
+no.addEventListener("focus",dodge);no.addEventListener("click",function(e){e.preventDefault();dodge()});
+window.addEventListener("resize",function(){curX=0;curY=0;no.style.transform="translate(0,0)"});
+yes.addEventListener("click",function(){$("ask").hidden=true;no.style.display="none";$("pick").hidden=false;window.scrollTo(0,0);burst(80,window.innerWidth/2,window.innerHeight*.6)});
+
+// Sélection du jour et de l'heure
+var pickedDate=null,fmtShort=new Intl.DateTimeFormat("fr-FR",{weekday:"short"}),fmtMonth=new Intl.DateTimeFormat("fr-FR",{month:"short"}),fmtLong=new Intl.DateTimeFormat("fr-FR",{weekday:"long",day:"numeric",month:"long"});
+(function(){
+  var days=$("days"),start=new Date();start.setHours(12,0,0,0);
+  for(var i=1;i<=14;i++){
+    (function(off){
+      var d=new Date(start.getTime());d.setDate(d.getDate()+off);
+      var b=document.createElement("button");b.type="button";b.className="chip";b.setAttribute("aria-pressed","false");
+      var a=document.createElement("small");a.textContent=fmtShort.format(d).replace(".","");
+      var n=document.createElement("strong");n.textContent=d.getDate();
+      var m=document.createElement("small");m.textContent=fmtMonth.format(d).replace(".","");
+      b.appendChild(a);b.appendChild(n);b.appendChild(m);
+      b.addEventListener("click",function(){pickedDate=d;Array.prototype.forEach.call(days.children,function(c){c.setAttribute("aria-pressed",String(c===b))});$("confirm").disabled=false});
+      days.appendChild(b);
+    })(i);
+  }
+})();
+var slider=$("time");
+function fmtTime(v){var hh=Math.floor(v),mm=(v-hh)?"30":"00";return(hh<10?"0":"")+hh+":"+mm}
+function moodFor(v){if(v<15)return"Un déjeuner ou un goûter tôt";if(v<18)return"Un après-midi tranquille";if(v<20.5)return"L'heure dorée";if(v<22.5)return"Une belle soirée";return"Tard dans la nuit"}
+function updateTime(){var v=parseFloat(slider.value);$("timeText").textContent=fmtTime(v);$("mood").textContent=moodFor(v)}
+slider.addEventListener("input",updateTime);updateTime();
+
+// Confirmation : ouvre WhatsApp avec ton numéro et le message prérempli
+var message="";
+$("confirm").addEventListener("click",function(){
+  if(!pickedDate)return;
+  var when=fmtLong.format(pickedDate)+" à "+fmtTime(parseFloat(slider.value));
+  message="Bonsoir, c'est "+CONFIG.name+". J'accepte ton invitation avec grand plaisir : "+when+". Dis-moi où on se retrouve.";
+  $("sumWhen").textContent=when;
+  var wa=CONFIG.phone?"https://wa.me/"+CONFIG.phone+"?text=":"https://api.whatsapp.com/send?text=";
+  $("waBtn").href=wa+encodeURIComponent(message);
+  $("pick").hidden=true;$("done").hidden=false;window.scrollTo(0,0);
+  burst(80,window.innerWidth/2,window.innerHeight*.55);
+});
+$("copyBtn").addEventListener("click",function(){
+  var note=$("copied");
+  function fb(){note.textContent="Copie impossible ici : écris le message toi-même, avec la date choisie."}
+  try{navigator.clipboard.writeText(message).then(function(){note.textContent="Message copié, colle-le où tu veux."},fb)}catch(e){fb()}
+});
+</script>
+</body>
+</html>
